@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+<!-- 
+
+# WarmUp - default:33.33.33.33:8084 (http)
+mvn gatling:execute -PWarmUp
+mvn gatling:execute -PWarmUp -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9018/GetAggregatedFunctionalStatus/service/v2
+mvn gatling:execute -PWarmUp -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9018/GetAggregatedFunctionalStatus/service/v2
+
+# PingForConfiguration - default:33.33.33.33:8084 (http)
+mvn gatling:execute -PPingForConfiguration
+mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9018/agp/getaggregatedfunctionalstatus/itintegration/monitoring/PingForConfiguration/1/rivtabp21
+mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9018/agp/getaggregatedfunctionalstatus/itintegration/monitoring/PingForConfiguration/1/rivtabp21
+
+# Smoke - default:ine-sit-app03 (http)
+mvn gatling:execute -PSmoke
+mvn gatling:execute -PSmoke -DbaseUrl=http://33.33.33.33:8084/GetAggregatedFunctionalStatus/service/v2
+mvn gatling:execute -PSmoke -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9018/GetAggregatedFunctionalStatus/service/v2
+
+# Load - default:ine-sit-app03 (http)
+mvn gatling:execute -PLoad
+mvn gatling:execute -PLoad -DbaseUrl=http://33.33.33.33:8084/GetAggregatedFunctionalStatus/service/v2
+mvn gatling:execute -PLoad -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9018/GetAggregatedFunctionalStatus/service/v2
+
+# Robustness - default:ine-sit-app03 (http)
+mvn gatling:execute -PRobustness
+mvn gatling:execute -PRobustness -DbaseUrl=http://33.33.33.33:8084/GetAggregatedFunctionalStatus/service/v2
+mvn gatling:execute -PRobustness -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9018/GetAggregatedFunctionalStatus/service/v2
+
+-->
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description</groupId>
+  <artifactId>performance</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <properties>
+    <gatling.version>2.1.4</gatling.version>
+    <gatling-maven-plugin.version>2.1.2</gatling-maven-plugin.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.gatling.highcharts</groupId>
+      <artifactId>gatling-charts-highcharts</artifactId>
+      <version>${gatling.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>io.gatling</groupId>
+        <artifactId>gatling-maven-plugin</artifactId>
+        <version>${gatling-maven-plugin.version}</version>
+        <configuration>
+          <simulationClass>${simulationClass}</simulationClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>WarmUp</id>
+      <properties>
+        <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description.getaggregatedfunctionalstatus.TP00WarmUp</simulationClass>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>PingForConfiguration</id>
+      <properties>
+        <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description.getaggregatedfunctionalstatus.TP01PingForConfiguration</simulationClass>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>Smoke</id>
+      <properties>
+        <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description.getaggregatedfunctionalstatus.TP02Smoke</simulationClass>
+      </properties>
+    </profile>
+    
+    <profile>
+      <id>Load</id>
+      <properties>
+        <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description.getaggregatedfunctionalstatus.TP03Load</simulationClass>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>Robustness</id>
+      <properties>
+        <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description.getaggregatedfunctionalstatus.TP04Robustness</simulationClass>
+      </properties>
+    </profile>
+  </profiles>
+</project>
