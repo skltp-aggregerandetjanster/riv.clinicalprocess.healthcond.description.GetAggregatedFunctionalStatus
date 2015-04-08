@@ -1,0 +1,9 @@
+.classpath
+.project
+GetAggregatedFunctionalStatus-schemas/.settings
+GetAggregatedFunctionalStatus-schemas/target
+GetAggregatedFunctionalStatus-teststub/.settings
+GetAggregatedFunctionalStatus-teststub/target
+GetAggregatedFunctionalStatus/target
+target
+GetAggregatedFunctionalStatus/.settings
