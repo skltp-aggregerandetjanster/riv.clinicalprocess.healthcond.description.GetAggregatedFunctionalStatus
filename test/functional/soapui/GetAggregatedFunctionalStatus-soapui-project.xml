@@ -1515,7 +1515,7 @@ https://qa.esb.ntjp.se:443/vp/Update/1/rivtabp21</con:description><con:settings/
             <urn2:engagement>
                <urn2:registeredResidentIdentification>121212121212</urn2:registeredResidentIdentification>
                <urn2:serviceDomain>riv:clinicalprocess:activity:request</urn2:serviceDomain>
-               <urn2:categorization>8</urn2:categorization>
+               <urn2:categorization>fun-fun</urn2:categorization>
                <urn2:logicalAddress>HSA-ID-4</urn2:logicalAddress>
                <urn2:businessObjectInstanceIdentifier>NA</urn2:businessObjectInstanceIdentifier>
                <urn2:clinicalProcessInterestId>NA</urn2:clinicalProcessInterestId>
@@ -1529,7 +1529,7 @@ https://qa.esb.ntjp.se:443/vp/Update/1/rivtabp21</con:description><con:settings/
             <urn2:engagement>
                <urn2:registeredResidentIdentification>121212121212</urn2:registeredResidentIdentification>
                <urn2:serviceDomain>riv:clinicalprocess:activity:request</urn2:serviceDomain>
-               <urn2:categorization>8</urn2:categorization>
+               <urn2:categorization>fun-fun</urn2:categorization>
                <urn2:logicalAddress>HSA-ID-5</urn2:logicalAddress>
                <urn2:businessObjectInstanceIdentifier>NA</urn2:businessObjectInstanceIdentifier>
                <urn2:clinicalProcessInterestId>NA</urn2:clinicalProcessInterestId>
@@ -1543,7 +1543,7 @@ https://qa.esb.ntjp.se:443/vp/Update/1/rivtabp21</con:description><con:settings/
             <urn2:engagement>
                <urn2:registeredResidentIdentification>121212121212</urn2:registeredResidentIdentification>
                <urn2:serviceDomain>riv:clinicalprocess:activity:request</urn2:serviceDomain>
-               <urn2:categorization>8</urn2:categorization>
+               <urn2:categorization>fun-fun</urn2:categorization>
                <urn2:logicalAddress>HSA-ID-6</urn2:logicalAddress>
                <urn2:businessObjectInstanceIdentifier>NA</urn2:businessObjectInstanceIdentifier>
                <urn2:clinicalProcessInterestId>NA</urn2:clinicalProcessInterestId>
@@ -1569,7 +1569,7 @@ https://qa.esb.ntjp.se:443/vp/Update/1/rivtabp21</con:description><con:settings/
             <urn2:engagement>
                <urn2:registeredResidentIdentification>194804032094</urn2:registeredResidentIdentification>
                <urn2:serviceDomain>riv:clinicalprocess:activity:request</urn2:serviceDomain>
-               <urn2:categorization>caa-ga</urn2:categorization>
+               <urn2:categorization>fun-fun</urn2:categorization>
                <urn2:logicalAddress>HSA-ID-7</urn2:logicalAddress>
                <urn2:businessObjectInstanceIdentifier>NA</urn2:businessObjectInstanceIdentifier>
                <urn2:clinicalProcessInterestId>NA</urn2:clinicalProcessInterestId>
@@ -1595,7 +1595,7 @@ https://qa.esb.ntjp.se:443/vp/Update/1/rivtabp21</con:description><con:settings/
             <urn2:engagement>
                <urn2:registeredResidentIdentification>194911172296</urn2:registeredResidentIdentification>
                <urn2:serviceDomain>riv:clinicalprocess:activity:request</urn2:serviceDomain>
-               <urn2:categorization>8</urn2:categorization>
+               <urn2:categorization>fun-fun</urn2:categorization>
                <urn2:logicalAddress>HSA-ID-1</urn2:logicalAddress>
                <urn2:businessObjectInstanceIdentifier>NA</urn2:businessObjectInstanceIdentifier>
                <urn2:clinicalProcessInterestId>NA</urn2:clinicalProcessInterestId>
@@ -1609,7 +1609,7 @@ https://qa.esb.ntjp.se:443/vp/Update/1/rivtabp21</con:description><con:settings/
             <urn2:engagement>
                <urn2:registeredResidentIdentification>194911172296</urn2:registeredResidentIdentification>
                <urn2:serviceDomain>riv:clinicalprocess:activity:request</urn2:serviceDomain>
-               <urn2:categorization>8</urn2:categorization>
+               <urn2:categorization>fun-fun</urn2:categorization>
                <urn2:logicalAddress>HSA-ID-2</urn2:logicalAddress>
                <urn2:businessObjectInstanceIdentifier>NA</urn2:businessObjectInstanceIdentifier>
                <urn2:clinicalProcessInterestId>NA</urn2:clinicalProcessInterestId>
@@ -1635,7 +1635,7 @@ https://qa.esb.ntjp.se:443/vp/Update/1/rivtabp21</con:description><con:settings/
             <urn2:engagement>
                <urn2:registeredResidentIdentification>198611062384</urn2:registeredResidentIdentification>
                <urn2:serviceDomain>riv:clinicalprocess:activity:request</urn2:serviceDomain>
-               <urn2:categorization>8</urn2:categorization>
+               <urn2:categorization>fun-fun</urn2:categorization>
                <urn2:logicalAddress>HSA-ID-1</urn2:logicalAddress>
                <urn2:businessObjectInstanceIdentifier>NA</urn2:businessObjectInstanceIdentifier>
                <urn2:clinicalProcessInterestId>NA</urn2:clinicalProcessInterestId>
@@ -1649,7 +1649,7 @@ https://qa.esb.ntjp.se:443/vp/Update/1/rivtabp21</con:description><con:settings/
             <urn2:engagement>
                <urn2:registeredResidentIdentification>198611062384</urn2:registeredResidentIdentification>
                <urn2:serviceDomain>riv:clinicalprocess:activity:request</urn2:serviceDomain>
-               <urn2:categorization>8</urn2:categorization>
+               <urn2:categorization>fun-fun</urn2:categorization>
                <urn2:logicalAddress>HSA-ID-2</urn2:logicalAddress>
                <urn2:businessObjectInstanceIdentifier>NA</urn2:businessObjectInstanceIdentifier>
                <urn2:clinicalProcessInterestId>NA</urn2:clinicalProcessInterestId>
@@ -1663,7 +1663,7 @@ https://qa.esb.ntjp.se:443/vp/Update/1/rivtabp21</con:description><con:settings/
             <urn2:engagement>
                <urn2:registeredResidentIdentification>198611062384</urn2:registeredResidentIdentification>
                <urn2:serviceDomain>riv:clinicalprocess:activity:request</urn2:serviceDomain>
-               <urn2:categorization>8</urn2:categorization>
+               <urn2:categorization>fun-fun</urn2:categorization>
                <urn2:logicalAddress>HSA-ID-3</urn2:logicalAddress>
                <urn2:businessObjectInstanceIdentifier>NA</urn2:businessObjectInstanceIdentifier>
                <urn2:clinicalProcessInterestId>NA</urn2:clinicalProcessInterestId>
@@ -1689,7 +1689,7 @@ https://qa.esb.ntjp.se:443/vp/Update/1/rivtabp21</con:description><con:settings/
             <urn2:engagement>
                <urn2:registeredResidentIdentification>192011189228</urn2:registeredResidentIdentification>
                <urn2:serviceDomain>riv:clinicalprocess:activity:request</urn2:serviceDomain>
-               <urn2:categorization>8</urn2:categorization>
+               <urn2:categorization>fun-fun</urn2:categorization>
                <urn2:logicalAddress>HSA-ID-1</urn2:logicalAddress>
                <urn2:businessObjectInstanceIdentifier>NA</urn2:businessObjectInstanceIdentifier>
                <urn2:clinicalProcessInterestId>NA</urn2:clinicalProcessInterestId>
@@ -1866,4 +1866,4 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activity/request/GetRequestStatus/
          </urn1:patientId>
       </urn1:GetFunctionalStatus>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="1 ProcessingStatusList"><con:configuration><path>count(//*:ProcessingStatus/*:ProcessingStatusList)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="XPath Match" name="0 functionalStatusAssessment"><con:configuration><path>count(//*:functionalStatusAssessment)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="Simple Contains" name="VP007"><con:configuration><token>VP007</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:clinicalprocess:healthcond:description:GetFunctionalStatusResponder:2:GetFunctionalStatus"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>agg-env</con:name><con:value>https://qa.esb.ntjp.se:443/vp/clinicalprocess/activity/request/GetFunctionalStatus/2/rivtabp21</con:value></con:property></con:properties></con:testSuite><con:properties><con:property><con:name>serviceEndpoint</con:name><con:value>33.33.33.33:8084</con:value></con:property><con:property><con:name>serviceEndpointVp</con:name><con:value>33.33.33.33:20000</con:value></con:property><con:property><con:name>serviceDomain</con:name><con:value>riv:clinicalprocess:healthcond:description</con:value></con:property><con:property><con:name>categorization</con:name><con:value>fun-fun</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="XPath Match" name="1 ProcessingStatusList"><con:configuration><path>count(//*:ProcessingStatus/*:ProcessingStatusList)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="XPath Match" name="0 functionalStatusAssessment"><con:configuration><path>count(//*:functionalStatusAssessment)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="Simple Contains" name="VP007"><con:configuration><token>VP007</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:clinicalprocess:healthcond:description:GetFunctionalStatusResponder:2:GetFunctionalStatus"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>agg-env</con:name><con:value>https://qa.esb.ntjp.se:443/vp/clinicalprocess/activity/request/GetFunctionalStatus/2/rivtabp21</con:value></con:property></con:properties></con:testSuite><con:properties><con:property><con:name>serviceEndpoint</con:name><con:value>33.33.33.33:8084</con:value></con:property><con:property><con:name>serviceEndpointVp</con:name><con:value>33.33.33.33:20000</con:value></con:property><con:property><con:name>serviceDomain</con:name><con:value>riv:clinicalprocess:healthcond:description</con:value></con:property><con:property><con:name>categorization</con:name><con:value>fun-fun</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
