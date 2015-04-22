@@ -1,8 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-<!-- 
+<!--
 
 # WarmUp - default:33.33.33.33:8084 (http)
 mvn gatling:execute -PWarmUp
@@ -35,7 +35,7 @@ mvn gatling:execute -PRobustness -DbaseUrl=http://ine-dit-app02.sth.basefarm.net
 
   <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description</groupId>
   <artifactId>performance</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0-RC2-SNAPSHOT</version>
 
   <properties>
     <gatling.version>2.1.4</gatling.version>
@@ -85,7 +85,7 @@ mvn gatling:execute -PRobustness -DbaseUrl=http://ine-dit-app02.sth.basefarm.net
         <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description.getaggregatedfunctionalstatus.TP02Smoke</simulationClass>
       </properties>
     </profile>
-    
+
     <profile>
       <id>Load</id>
       <properties>

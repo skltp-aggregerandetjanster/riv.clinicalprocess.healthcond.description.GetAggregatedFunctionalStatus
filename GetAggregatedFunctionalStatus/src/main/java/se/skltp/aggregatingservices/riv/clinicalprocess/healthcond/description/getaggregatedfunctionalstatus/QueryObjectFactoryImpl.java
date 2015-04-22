@@ -21,9 +21,7 @@ public class QueryObjectFactoryImpl implements QueryObjectFactory {
         this.eiServiceDomain = eiServiceDomain;
     }
 
-    @SuppressWarnings("unused")
     private String eiCategorization;
-
     public void setEiCategorization(String eiCategorization) {
         this.eiCategorization = eiCategorization;
     }
@@ -41,7 +39,8 @@ public class QueryObjectFactoryImpl implements QueryObjectFactory {
         FindContentType fc = new FindContentType();
         fc.setRegisteredResidentIdentification(request.getPatientId().getId());
         fc.setServiceDomain(eiServiceDomain);
-
+        fc.setCategorization(eiCategorization);
+        
         QueryObject qo = new QueryObject(fc, request);
         return qo;
     }
