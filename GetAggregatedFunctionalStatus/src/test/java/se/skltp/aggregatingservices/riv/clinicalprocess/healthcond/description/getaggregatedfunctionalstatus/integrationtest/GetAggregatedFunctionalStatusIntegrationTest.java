@@ -127,7 +127,7 @@ public class GetAggregatedFunctionalStatusIntegrationTest extends AbstractAggreg
     }
 
     /**
-     * Perform a test that is expected to casue the source system to fail with its processing
+     * Perform a test that is expected to cause the source system to fail with its processing
      */
     @Test
     public void test_fault_invalidInput() throws Exception {
@@ -137,8 +137,7 @@ public class GetAggregatedFunctionalStatusIntegrationTest extends AbstractAggreg
     }
 
     /**
-     * Helper method for performing a call to the aggregating service and
-     * perform some common validations of the result
+     * Helper method for performing a call to the aggregating service and perform some common validations of the result
      * 
      * @param registeredResidentId
      * @param expectedProcessingStatusSize

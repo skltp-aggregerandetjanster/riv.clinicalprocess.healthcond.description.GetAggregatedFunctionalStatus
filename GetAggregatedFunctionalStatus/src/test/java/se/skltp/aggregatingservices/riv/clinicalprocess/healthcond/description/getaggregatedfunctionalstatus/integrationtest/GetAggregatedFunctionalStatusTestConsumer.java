@@ -29,7 +29,7 @@ public class GetAggregatedFunctionalStatusTestConsumer extends AbstractTestConsu
         Holder<GetFunctionalStatusResponseType> responseHolder = new Holder<GetFunctionalStatusResponseType>();
         Holder<ProcessingStatusType> processingStatusHolder = new Holder<ProcessingStatusType>();
 
-        consumer.callService("logical-adress", personnummer, processingStatusHolder, responseHolder);
+        consumer.callService("logical-address", personnummer, processingStatusHolder, responseHolder);
 
         log.info("Returned #timeslots = " + responseHolder.value.getFunctionalStatusAssessment().size());
     }
