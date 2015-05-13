@@ -40,8 +40,6 @@ public class QueryObjectFactoryImplTest {
     @Test
     public void testFindContentCategorization() {
         
-        objectUnderTest.setEiCategorization("fun-fun");
-        
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
         
@@ -52,7 +50,7 @@ public class QueryObjectFactoryImplTest {
                     .getDocumentElement();
             
             QueryObject qo = objectUnderTest.createQueryObject(node);
-            assertEquals("fun-fun",qo.getFindContent().getCategorization());
+            assertEquals(null,qo.getFindContent().getCategorization());
         } catch (SAXException e) {
             fail(e.getLocalizedMessage());
         } catch (IOException e) {

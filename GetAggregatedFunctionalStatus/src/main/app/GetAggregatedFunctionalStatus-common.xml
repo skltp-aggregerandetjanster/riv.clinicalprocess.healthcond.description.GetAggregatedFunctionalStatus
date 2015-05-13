@@ -49,6 +49,13 @@
 	      </spring:list>
 	    </spring:property>
 	  </spring:bean>
+
+      <!-- override definition from aggregating-service.xml -->
+      
+      <!-- use a list of categorizations to filter reply from engagement index -->  
+      <spring:bean name="requestListFactory" class="${REQUEST_LIST_FACTORY_IMPL}" >
+        <spring:property name="eiCategorizations" value="${EI_CATEGORIZATIONS}" />
+      </spring:bean>
     </spring:beans>
 
 </mule>

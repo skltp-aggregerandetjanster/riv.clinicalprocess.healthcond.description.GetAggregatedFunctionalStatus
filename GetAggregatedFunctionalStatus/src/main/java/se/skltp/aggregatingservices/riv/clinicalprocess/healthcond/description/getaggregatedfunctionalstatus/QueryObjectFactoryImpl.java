@@ -16,20 +16,18 @@ public class QueryObjectFactoryImpl implements QueryObjectFactory {
     private static final JaxbUtil ju = new JaxbUtil(GetFunctionalStatusType.class);
 
     private String eiServiceDomain;
-
     public void setEiServiceDomain(String eiServiceDomain) {
         this.eiServiceDomain = eiServiceDomain;
     }
 
-    private String eiCategorization;
     public void setEiCategorization(String eiCategorization) {
-        this.eiCategorization = eiCategorization;
+        log.info("eiCategorization is not used within QueryObjectFactoryImpl for GetAggregatedFunctionalStatus - instead the categories are filtered by RequestListFactoryImpl");
     }
-
+    
     /**
      * Transformerar GetFunctionalStatus request till EI FindContent request enligt:
      * 
-     * 1. subjectOfCareId --> registeredResidentIdentification 
+     * 1. subjectOfCareId                            --> registeredResidentIdentification 
      * 2. riv:clinicalprocess:healthcond:description --> serviceDomain
      */
     public QueryObject createQueryObject(Node node) {
@@ -39,7 +37,7 @@ public class QueryObjectFactoryImpl implements QueryObjectFactory {
         FindContentType fc = new FindContentType();
         fc.setRegisteredResidentIdentification(request.getPatientId().getId());
         fc.setServiceDomain(eiServiceDomain);
-        fc.setCategorization(eiCategorization);
+        fc.setCategorization(null); // no restriction - filter results in RequestListFactoryImpl
         
         QueryObject qo = new QueryObject(fc, request);
         return qo;

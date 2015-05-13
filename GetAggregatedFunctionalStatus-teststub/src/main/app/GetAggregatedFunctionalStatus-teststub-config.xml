@@ -26,9 +26,11 @@
       </spring:bean>
       
       <!-- Load teststub services -->
-      <spring:import resource="classpath:teststub-services/engagemangsindex-teststub-service.xml"/>
       <spring:import resource="classpath:teststub-services/service-producer-teststub-service.xml"/>
       <spring:import resource="classpath:teststub-services/PingForConfiguration-teststub-service.xml"/>
+
+      <!-- handles multiple categorizations -->
+      <spring:import resource="classpath:engagemangsindex-multiple-categorizations-teststub-service.xml"/>
             
     </spring:beans>
 

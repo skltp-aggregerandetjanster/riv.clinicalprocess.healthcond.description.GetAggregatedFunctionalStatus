@@ -2,6 +2,7 @@ package se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description.
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +23,31 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
     private static final Logger log = LoggerFactory.getLogger(RequestListFactoryImpl.class);
     private static final ThreadSafeSimpleDateFormat df = new ThreadSafeSimpleDateFormat("yyyyMMddhhmmss");
+
+    // never null - but can be empty
+    private List<String> eiCategorizations = new ArrayList<String>();
+    
+    /**
+     * FunctionalStatus has more than one categorization.
+     * Define a list of supported categorizations.
+     * @param eiCategorizations - comma separated categorization codes - for example fun-fun,pad-pad
+     */
+    public void setEiCategorizations(String eiCategorizations) {
+        if (eiCategorizations == null || eiCategorizations.trim().length() < 1) {
+        } else {
+            this.eiCategorizations = Arrays.asList(eiCategorizations.split(","));
+            if (this.eiCategorizations.get(0).trim().length() < 1) {
+                this.eiCategorizations.clear();
+            } else {
+                for (String eic : this.eiCategorizations) {
+                    log.info("AggregatedFunctionalStatus - categorization {}", eic);
+                }
+            }
+        }
+        if (this.eiCategorizations.isEmpty()) {
+            throw new RuntimeException("AggregatedFunctionalStatus - no categorizations specified (EI_CATEGORIZATIONS)");
+        }
+    }
 
     /**
      * Filtrera svarsposter från i EI (ei-engagement) baserat parametrar i GetFunctionalStatus requestet (req). 
@@ -57,13 +83,19 @@ public class RequestListFactoryImpl implements RequestListFactory {
         FindContentResponseType eiResp = (FindContentResponseType) src;
         List<EngagementType> inEngagements = eiResp.getEngagement();
 
+        
         log.info("Got {} hits in the engagement index", inEngagements.size());
 
         Map<String, List<String>> sourceSystem_pdlUnitList_map = new HashMap<String, List<String>>();
 
         for (EngagementType inEng : inEngagements) {
+                
             // Filter
-            if (isBetween(reqFrom, reqTo, inEng.getMostRecentContent()) && isPartOf(reqCareUnitList, inEng.getLogicalAddress())) {
+            if (isBetween(reqFrom, reqTo, inEng.getMostRecentContent()) 
+                && 
+                isPartOf(reqCareUnitList, inEng.getLogicalAddress()) 
+                && 
+                isCategorization(inEng.getCategorization())) {
                 // Add pdlUnit to source system
                 log.debug("Add SS: {} for PDL unit: {}", inEng.getSourceSystem(), inEng.getLogicalAddress());
                 addPdlUnitToSourceSystem(sourceSystem_pdlUnitList_map, inEng.getSourceSystem(), inEng.getLogicalAddress());
@@ -85,6 +117,18 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
         log.debug("Transformed payload: {}", reqList);
         return reqList;
+    }
+
+    private boolean isCategorization(String categorization) {
+        if (eiCategorizations.isEmpty()) {
+            return true;
+        } else if (eiCategorizations.contains(categorization)) {
+            log.debug("Processing supported categorization {}", categorization);
+            return true;
+        } else {
+            log.debug("Rejected unsupported categorization {}", categorization);
+            return false;
+        }
     }
 
     Date parseTs(String ts) {

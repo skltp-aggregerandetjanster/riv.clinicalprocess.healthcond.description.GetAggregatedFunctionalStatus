@@ -56,7 +56,7 @@ public class GetAggregatedFunctionalStatusIntegrationTest extends AbstractAggreg
              // since mule-deploy.properties can't load config-files from jar-files on the classpath, e.g. agp-core.jar, 
              // "aggregating-services-common.xml," + 
              // "aggregating-service.xml"
-               "teststub-services/engagemangsindex-teststub-service.xml," + 
+               "engagemangsindex-multiple-categorizations-teststub-service.xml," + 
                "teststub-services/service-producer-teststub-service.xml";
     }
 
