@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.ThreadSafeSimpleDateFormat;
@@ -30,22 +31,22 @@ public class RequestListFactoryImpl implements RequestListFactory {
     /**
      * FunctionalStatus has more than one categorization.
      * Define a list of supported categorizations.
-     * @param eiCategorizations - comma separated categorization codes - for example fun-fun,pad-pad
+     * @param eicats - comma separated categorization codes - for example fun-fun,pad-pad
      */
-    public void setEiCategorizations(String eiCategorizations) {
-        if (eiCategorizations == null || eiCategorizations.trim().length() < 1) {
+    public void setEiCategorizations(String eicats) {
+        if (eicats == null || eicats.trim().length() < 1) {
         } else {
-            this.eiCategorizations = Arrays.asList(eiCategorizations.split(","));
-            if (this.eiCategorizations.get(0).trim().length() < 1) {
-                this.eiCategorizations.clear();
+            eiCategorizations = Arrays.asList(eicats.split(","));
+            if (eiCategorizations.get(0).trim().length() < 1) {
+                eiCategorizations.clear();
             } else {
-                for (String eic : this.eiCategorizations) {
+                for (String eic : eiCategorizations) {
                     log.info("AggregatedFunctionalStatus - categorization {}", eic);
                 }
             }
         }
-        if (this.eiCategorizations.isEmpty()) {
-            throw new RuntimeException("AggregatedFunctionalStatus - no categorizations specified (EI_CATEGORIZATIONS)");
+        if (eiCategorizations.isEmpty()) {
+            throw new RuntimeException("AggregatedFunctionalStatus - no categorizations specified in configuration (EI_CATEGORIZATIONS)");
         }
     }
 
@@ -76,8 +77,8 @@ public class RequestListFactoryImpl implements RequestListFactory {
         Date reqFrom = null;
         Date reqTo = null;
         if (originalRequest.getDatePeriod() != null) {
-            reqFrom = parseTs(originalRequest.getDatePeriod().getStart());
-            reqTo = parseTs(originalRequest.getDatePeriod().getEnd());
+            reqFrom = parseOriginalRequestTimeStamp(originalRequest.getDatePeriod().getStart());
+            reqTo = parseOriginalRequestTimeStamp(originalRequest.getDatePeriod().getEnd());
         }
 
         FindContentResponseType eiResp = (FindContentResponseType) src;
@@ -91,7 +92,7 @@ public class RequestListFactoryImpl implements RequestListFactory {
         for (EngagementType inEng : inEngagements) {
                 
             // Filter
-            if (isBetween(reqFrom, reqTo, inEng.getMostRecentContent()) 
+            if (mostRecentContentIsBetween(reqFrom, reqTo, inEng.getMostRecentContent()) 
                 && 
                 isPartOf(reqCareUnitList, inEng.getLogicalAddress()) 
                 && 
@@ -131,29 +132,41 @@ public class RequestListFactoryImpl implements RequestListFactory {
         }
     }
 
-    Date parseTs(String ts) {
-        if (ts == null || ts.length() == 0) {
+    Date parseOriginalRequestTimeStamp(String tsStr) {
+        if (tsStr == null) {
+            log.debug("original request timestamp string is null");
+            return null;
+        } else if (StringUtils.isBlank(tsStr)) {
+            log.debug("original request timestamp string is blank");
             return null;
         } else {
             try {
-                return df.parse(ts);
+                return df.parse(tsStr);
             } catch (ParseException e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException("Failed to parse original request timestamp " + tsStr, e);
             }
         }
     }
 
-    boolean isBetween(Date from, Date to, String tsStr) {
-        log.debug("Is {} between {} and ", new Object[] { tsStr, from, to });
+    boolean mostRecentContentIsBetween(Date from, Date to, String mostRecentContentTimestamp) {
+        if (mostRecentContentTimestamp == null) {
+            log.error("mostRecentContent - timestamp string is null");
+            return true;
+        }
+        if (StringUtils.isBlank(mostRecentContentTimestamp)) {
+            log.error("mostRecentContent - timestamp string is blank");
+            return true;
+        }
+        log.debug("Is {} between {} and ", new Object[] { mostRecentContentTimestamp, from, to });
         try {
-            Date ts = df.parse(tsStr);
+            Date ts = df.parse(mostRecentContentTimestamp);
             if (from != null && from.after(ts))
                 return false;
             if (to != null && to.before(ts))
                 return false;
             return true;
         } catch (ParseException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed to parse most recent content timestamp " + mostRecentContentTimestamp,e);
         }
     }
 
