@@ -6,8 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.jaxb.JaxbUtil;
 
+import riv.clinicalprocess.healthcond.description.enums._2.ResultCodeEnum;
 import riv.clinicalprocess.healthcond.description.getfunctionalstatusresponder.v2.GetFunctionalStatusResponseType;
 import riv.clinicalprocess.healthcond.description.getfunctionalstatusresponder.v2.ObjectFactory;
+import riv.clinicalprocess.healthcond.description._2.ResultType;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
 import se.skltp.agp.service.api.QueryObject;
 import se.skltp.agp.service.api.ResponseListFactory;
@@ -26,6 +28,9 @@ public class ResponseListFactoryImpl implements ResponseListFactory {
             GetFunctionalStatusResponseType response = (GetFunctionalStatusResponseType) object;
             aggregatedResponse.getFunctionalStatusAssessment().addAll(response.getFunctionalStatusAssessment());
         }
+        
+        aggregatedResponse.setResult(new ResultType());
+        aggregatedResponse.getResult().setResultCode(ResultCodeEnum.INFO);
 
         log.info("Returning {} aggregated FunctionalStatusAssessment for patient id {}", 
                   aggregatedResponse.getFunctionalStatusAssessment().size(),
