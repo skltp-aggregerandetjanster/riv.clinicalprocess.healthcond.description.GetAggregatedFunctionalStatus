@@ -1,6 +1,7 @@
 package se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description.getaggregatedfunctionalstatus;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -8,9 +9,12 @@ import static org.junit.Assert.fail;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
+import org.joda.time.DateTime;
 import org.junit.Test;
 
 import riv.clinicalprocess.healthcond.description.getfunctionalstatusresponder.v2.GetFunctionalStatusType;
@@ -131,6 +135,9 @@ public class RequestListFactoryTest {
     @Test
     public void testParseTimestamp() {
         Date d = objectUnderTest.parseOriginalRequestTimeStamp("19700131153612");
-        assertTrue(d.getTime() == 2644572000L);
+        assertNotNull(d);
+        DateTime expected = new DateTime(1970,01,31,15,36,12,0);
+        DateTime actual   = new DateTime(d);
+        assertTrue("expecting " + expected + ", but found " + actual, expected.equals(actual));
     }
 }
