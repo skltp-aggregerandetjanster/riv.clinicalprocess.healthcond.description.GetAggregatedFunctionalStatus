@@ -35,7 +35,7 @@ mvn gatling:execute -PRobustness -DbaseUrl=http://ine-dit-app02.sth.basefarm.net
 
   <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description</groupId>
   <artifactId>GetAggregatedFunctionalStatus-test-non-functional</artifactId>
-  <version>1.0.0-RC3-SNAPSHOT</version>
+  <version>1.0.0-RC5-SNAPSHOT</version>
 
   <properties>
     <gatling.version>2.1.6</gatling.version>
