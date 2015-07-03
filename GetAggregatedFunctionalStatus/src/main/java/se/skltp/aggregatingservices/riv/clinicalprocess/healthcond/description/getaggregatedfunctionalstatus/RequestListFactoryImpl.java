@@ -83,14 +83,12 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
         FindContentResponseType eiResp = (FindContentResponseType) src;
         List<EngagementType> inEngagements = eiResp.getEngagement();
-
         
         log.info("Got {} hits in the engagement index", inEngagements.size());
 
         Map<String, List<String>> sourceSystem_pdlUnitList_map = new HashMap<String, List<String>>();
 
         for (EngagementType inEng : inEngagements) {
-                
             // Filter
             if (mostRecentContentIsBetween(reqFrom, reqTo, inEng.getMostRecentContent()) 
                 && 
@@ -132,7 +130,7 @@ public class RequestListFactoryImpl implements RequestListFactory {
         }
     }
 
-    Date parseOriginalRequestTimeStamp(String tsStr) {
+    protected Date parseOriginalRequestTimeStamp(String tsStr) {
         if (tsStr == null) {
             log.debug("original request timestamp string is null");
             return null;
@@ -148,7 +146,7 @@ public class RequestListFactoryImpl implements RequestListFactory {
         }
     }
 
-    boolean mostRecentContentIsBetween(Date from, Date to, String mostRecentContentTimestamp) {
+    protected boolean mostRecentContentIsBetween(Date from, Date to, String mostRecentContentTimestamp) {
         if (mostRecentContentTimestamp == null) {
             log.error("mostRecentContent - timestamp string is null");
             return true;
@@ -170,7 +168,7 @@ public class RequestListFactoryImpl implements RequestListFactory {
         }
     }
 
-    boolean isPartOf(List<String> careUnitIdList, String careUnit) {
+    protected boolean isPartOf(List<String> careUnitIdList, String careUnit) {
         log.debug("Check presence of {} in {}", careUnit, careUnitIdList);
         if (careUnitIdList == null || careUnitIdList.isEmpty()) {
             return true;
@@ -179,7 +177,7 @@ public class RequestListFactoryImpl implements RequestListFactory {
         }
     }
 
-    void addPdlUnitToSourceSystem(Map<String, List<String>> sourceSystem_pdlUnitList_map, String sourceSystem, String pdlUnitId) {
+    private void addPdlUnitToSourceSystem(Map<String, List<String>> sourceSystem_pdlUnitList_map, String sourceSystem, String pdlUnitId) {
         List<String> careUnitList = sourceSystem_pdlUnitList_map.get(sourceSystem);
         if (careUnitList == null) {
             careUnitList = new ArrayList<String>();

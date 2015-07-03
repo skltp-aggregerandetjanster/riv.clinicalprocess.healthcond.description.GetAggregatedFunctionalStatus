@@ -29,7 +29,7 @@
     <xs:documentation>
 			 Tjänsteinteraktionens namn: GetFunctionalStatusInteraction
 			 Beskrivning: 
-			   
+			  Request functional status for a subject of care
 			 Revisioner: 
 			 Tjänstedomän: clinicalprocess:healthcond:description
 			 Tjänsteinteraktionstyp: Fråga-Svar

@@ -45,7 +45,6 @@
             <xs:element name="functionalStatusAssessmentHeader" type="tns:PatientSummaryHeaderType"/>
             <xs:element name="functionalStatusAssessmentBody"
                 type="tns:FunctionalStatusAssessmentBodyType"/>
-            <xs:element name="relation" type="tns:RelationType" maxOccurs="unbounded" minOccurs="0"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
@@ -59,33 +58,6 @@
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
-
-    <xs:complexType name="RelationType">
-        <xs:sequence>
-            <xs:element name="code" type="tns:CVType" minOccurs="1"/>
-            <xs:element name="referredInformation" type="tns:ReferredInformationType" minOccurs="1"
-                maxOccurs="1"/>
-            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="ReferredInformationType">
-        <xs:sequence>
-            <xs:element name="id" type="tns:IIType" minOccurs="1"/>
-            <xs:element name="time" type="tns:TimeStampType"/>
-            <xs:element name="type" type="xs:string" minOccurs="1"/>
-            <xs:element name="informationOwner" type="tns:InformationOwnerType"/>
-            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="InformationOwnerType">
-        <xs:sequence>
-            <xs:element name="id" type="tns:IIType" minOccurs="1"/>
-            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-
 
     <!-- @TODO better names for clinicalDocumentNoteCode -->
     <xs:complexType name="ClinicalDocumentNoteType">
@@ -103,7 +75,7 @@
     </xs:complexType>
 
     <xs:complexType name="PatientSummaryHeaderType">
-       <xs:sequence>
+        <xs:sequence>
             <xs:element name="documentId" type="xs:string"/>
             <xs:element name="sourceSystemHSAId" type="tns:HSAIdType"/>
             <xs:element name="documentTitle" type="xs:string" minOccurs="0"/>
@@ -123,7 +95,7 @@
     <!-- Only used here to keep backwards compatibility with GetCareDocumentation 2.0, must be removed in favour
         of PatientSummaryHeaderType above when we go for the next major version -->
     <xs:complexType name="CPatientSummaryHeaderType">
-       <xs:sequence>
+        <xs:sequence>
             <xs:element name="documentId" type="xs:string"/>
             <xs:element name="sourceSystemHSAid" type="tns:HSAIdType"/>
             <xs:element name="documentTitle" type="xs:string" minOccurs="0"/>
@@ -140,7 +112,7 @@
     </xs:complexType>
 
     <xs:complexType name="HealthcareProfessionalType">
-       <xs:sequence>
+        <xs:sequence>
             <xs:element name="authorTime" type="tns:TimeStampType"/>
             <xs:element name="healthcareProfessionalHSAId" type="tns:HSAIdType" minOccurs="0"/>
             <xs:element name="healthcareProfessionalName" type="xs:string" minOccurs="0"/>
@@ -156,7 +128,7 @@
 
 
     <xs:complexType name="OrgUnitType">
-       <xs:sequence>
+        <xs:sequence>
             <xs:element name="orgUnitHSAId" type="tns:HSAIdType" minOccurs="1"/>
             <xs:element name="orgUnitName" type="xs:string" minOccurs="1"/>
             <xs:element name="orgUnitTelecom" type="xs:string" minOccurs="0"/>
@@ -168,7 +140,7 @@
     </xs:complexType>
 
     <xs:complexType name="DiagnosisType">
-       <xs:sequence>
+        <xs:sequence>
             <xs:element name="diagnosisHeader" type="tns:PatientSummaryHeaderType"/>
             <xs:element name="diagnosisBody" type="tns:DiagnosisBodyType"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
@@ -176,7 +148,7 @@
     </xs:complexType>
 
     <xs:complexType name="DiagnosisBodyType">
-       <xs:sequence>
+        <xs:sequence>
             <xs:element name="typeOfDiagnosis" type="codes:DiagnosisTypeEnum"/>
             <xs:element minOccurs="0" name="chronicDiagnosis" type="xs:boolean"/>
             <xs:element name="diagnosisTime" type="tns:TimeStampType" minOccurs="0"/>
@@ -457,8 +429,6 @@
         </xs:sequence>
     </xs:complexType>
     <xs:element name="communicableDisease" type="tns:CommunicableDiseaseType"/>
-
-
 
     <xs:complexType name="ResultType">
         <xs:annotation>
