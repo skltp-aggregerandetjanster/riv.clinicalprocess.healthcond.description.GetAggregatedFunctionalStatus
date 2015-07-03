@@ -55,7 +55,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
               <sourceRoot>${schema.gen.src.dir}</sourceRoot>
               <wsdlOptions>
               <wsdlOption>
-                <wsdl>${schema.path}/clinicalprocess_healthcond_description_2.1/interactions/GetFunctionalStatusInteraction/GetFunctionalStatusInteraction_2.0_RIVTABP21.wsdl</wsdl>
+                <wsdl>${schema.path}/clinicalprocess_healthcond_description_2.1.3/interactions/GetFunctionalStatusInteraction/GetFunctionalStatusInteraction_2.0_RIVTABP21.wsdl</wsdl>
                   <extraargs>
                     <extraarg>-p</extraarg>
                     <extraarg>urn:riv:clinicalprocess:healthcond:description:GetFunctionalStatus:2:rivtabp21=riv.clinicalprocess.healthcond.description.getfunctionalstatus.v2.rivtabp21</extraarg>
