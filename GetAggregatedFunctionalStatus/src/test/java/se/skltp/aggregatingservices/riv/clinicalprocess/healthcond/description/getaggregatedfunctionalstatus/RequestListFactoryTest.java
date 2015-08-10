@@ -70,23 +70,4 @@ public class RequestListFactoryTest {
         List<?> l = objectUnderTest.createRequestList(qo, src);
         assertTrue(l.size() == 1);
     }
-    
-    @Test
-    public void testMostRecentContentNotTimestamp() {
-        objectUnderTest.setEiCategorizations("abc");
-        QueryObject qo = new QueryObject(new FindContentType(), new GetFunctionalStatusType());
-        assertTrue(qo.getExtraArg().getClass() == GetFunctionalStatusType.class);
-        ((GetFunctionalStatusType)qo.getExtraArg()).getCareUnitHSAId().add("HSA-ID-789");
-        FindContentResponseType src = new FindContentResponseType();
-        src.getEngagement().add(new EngagementType());
-        src.getEngagement().get(0).setCategorization("abc");
-        src.getEngagement().get(0).setLogicalAddress("HSA-ID-789");
-        src.getEngagement().get(0).setMostRecentContent("980511");
-        try {
-            objectUnderTest.createRequestList(qo, src);
-            fail("Exception expected");
-        } catch (RuntimeException r) {
-            assertTrue(r.getCause().getClass() == ParseException.class);
-        }
-    }
 }
