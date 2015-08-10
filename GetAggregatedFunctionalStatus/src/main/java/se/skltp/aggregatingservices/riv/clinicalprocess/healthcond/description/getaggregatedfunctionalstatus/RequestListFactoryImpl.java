@@ -1,18 +1,14 @@
 package se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description.getaggregatedfunctionalstatus;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.soitoolkit.commons.mule.util.ThreadSafeSimpleDateFormat;
 
 import riv.clinicalprocess.healthcond.description.getfunctionalstatusresponder.v2.GetFunctionalStatusType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentResponseType;
@@ -23,7 +19,6 @@ import se.skltp.agp.service.api.RequestListFactory;
 public class RequestListFactoryImpl implements RequestListFactory {
 
     private static final Logger log = LoggerFactory.getLogger(RequestListFactoryImpl.class);
-    private static final ThreadSafeSimpleDateFormat df = new ThreadSafeSimpleDateFormat("yyyyMMddhhmmss");
 
     // never null - but can be empty
     private List<String> eiCategorizations = new ArrayList<String>();
@@ -73,14 +68,6 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
         List<String> reqCareUnitList = null;
         reqCareUnitList = originalRequest.getCareUnitHSAId();
-
-        Date reqFrom = null;
-        Date reqTo = null;
-        if (originalRequest.getDatePeriod() != null) {
-            reqFrom = parseOriginalRequestTimeStamp(originalRequest.getDatePeriod().getStart());
-            reqTo = parseOriginalRequestTimeStamp(originalRequest.getDatePeriod().getEnd());
-        }
-
         FindContentResponseType eiResp = (FindContentResponseType) src;
         List<EngagementType> inEngagements = eiResp.getEngagement();
         
@@ -90,9 +77,7 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
         for (EngagementType inEng : inEngagements) {
             // Filter
-            if (mostRecentContentIsBetween(reqFrom, reqTo, inEng.getMostRecentContent()) 
-                && 
-                isPartOf(reqCareUnitList, inEng.getLogicalAddress()) 
+            if (isPartOf(reqCareUnitList, inEng.getLogicalAddress()) 
                 && 
                 isCategorization(inEng.getCategorization())) {
                 // Add pdlUnit to source system
@@ -127,44 +112,6 @@ public class RequestListFactoryImpl implements RequestListFactory {
         } else {
             log.debug("Rejected unsupported categorization {}", categorization);
             return false;
-        }
-    }
-
-    protected Date parseOriginalRequestTimeStamp(String tsStr) {
-        if (tsStr == null) {
-            log.debug("original request timestamp string is null");
-            return null;
-        } else if (StringUtils.isBlank(tsStr)) {
-            log.debug("original request timestamp string is blank");
-            return null;
-        } else {
-            try {
-                return df.parse(tsStr);
-            } catch (ParseException e) {
-                throw new RuntimeException("Failed to parse original request timestamp " + tsStr, e);
-            }
-        }
-    }
-
-    protected boolean mostRecentContentIsBetween(Date from, Date to, String mostRecentContentTimestamp) {
-        if (mostRecentContentTimestamp == null) {
-            log.error("mostRecentContent - timestamp string is null");
-            return true;
-        }
-        if (StringUtils.isBlank(mostRecentContentTimestamp)) {
-            log.error("mostRecentContent - timestamp string is blank");
-            return true;
-        }
-        log.debug("Is {} between {} and ", new Object[] { mostRecentContentTimestamp, from, to });
-        try {
-            Date ts = df.parse(mostRecentContentTimestamp);
-            if (from != null && from.after(ts))
-                return false;
-            if (to != null && to.before(ts))
-                return false;
-            return true;
-        } catch (ParseException e) {
-            throw new RuntimeException("Failed to parse most recent content timestamp " + mostRecentContentTimestamp,e);
         }
     }
 
