@@ -31,6 +31,7 @@ public class ResponseListFactoryImpl implements ResponseListFactory {
         
         aggregatedResponse.setResult(new ResultType());
         aggregatedResponse.getResult().setResultCode(ResultCodeEnum.INFO);
+        aggregatedResponse.getResult().setLogId("NA");
 
         log.info("Returning {} aggregated FunctionalStatusAssessment for patient id {}", 
                   aggregatedResponse.getFunctionalStatusAssessment().size(),

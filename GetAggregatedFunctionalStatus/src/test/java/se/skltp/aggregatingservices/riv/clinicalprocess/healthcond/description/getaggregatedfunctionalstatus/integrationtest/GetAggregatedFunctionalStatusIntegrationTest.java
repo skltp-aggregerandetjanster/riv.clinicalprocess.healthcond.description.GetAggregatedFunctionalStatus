@@ -27,6 +27,7 @@ import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
 
 import riv.clinicalprocess.healthcond.description._2.FunctionalStatusAssessmentType;
+import riv.clinicalprocess.healthcond.description.enums._2.ResultCodeEnum;
 import riv.clinicalprocess.healthcond.description.getfunctionalstatusresponder.v2.GetFunctionalStatusResponseType;
 import se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description.getaggregatedfunctionalstatus.GetAggregatedFunctionalStatusMuleServer;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusRecordType;
@@ -171,9 +172,9 @@ public class GetAggregatedFunctionalStatusIntegrationTest extends AbstractAggreg
 
         // Verify the response size and content
         GetFunctionalStatusResponseType response = responseHolder.value;
-        int expextedResponseSize = testData.length;
+        int expectedResponseSize = testData.length;
 
-        assertEquals(expextedResponseSize, response.getFunctionalStatusAssessment().size());
+        assertEquals(expectedResponseSize, response.getFunctionalStatusAssessment().size());
 
         for (int i = 0; i < testData.length; i++) {
             FunctionalStatusAssessmentType responseElement = response.getFunctionalStatusAssessment().get(i);
@@ -196,11 +197,14 @@ public class GetAggregatedFunctionalStatusIntegrationTest extends AbstractAggreg
         assertEquals(SAMPLE_ORIGINAL_CONSUMER_HSAID, EngagemangsindexTestProducerLogger.getLastOriginalConsumer());
 
         // Verify that correct x-vp-sender-id and x-rivta-original-serviceconsumer-hsaid http header 
-        // was passed to the service producer, given that a service producer was called
+        // were passed to the service producer, given that a service producer was called
         if (expectedProcessingStatusSize > 0) {
             assertEquals(SAMPLE_SENDER_ID, TestProducerLogger.getLastSenderId());
             assertEquals(SAMPLE_ORIGINAL_CONSUMER_HSAID, TestProducerLogger.getLastOriginalConsumer());
         }
+        
+        assertEquals(ResultCodeEnum.INFO, response.getResult().getResultCode());
+        assertEquals("NA", response.getResult().getLogId());
         return statusList.getProcessingStatusList();
     }
 }
