@@ -50,33 +50,35 @@ public class RequestListFactoryImpl implements RequestListFactory {
      * This list will be split by mule and sent to each source system.
      */
     public List<Object[]> createRequestList(QueryObject qo, FindContentResponseType src) {
+        List<Object[]> requestsToBeSentToSourceSystems = new ArrayList<Object[]>();
 
         FindContentResponseType findContentResponse = (FindContentResponseType) src;
         List<EngagementType> engagements = findContentResponse.getEngagement();
         log.debug("Got {} hits in the engagement index", engagements.size());
-        
-        Set<String> sourceSystems = new HashSet<String>(); // set of unique source system hsa ids
-        
-        // remove unsupported categorizations; remove duplicate sourceSystems
-        for (EngagementType engagement : engagements) {
-            if (isCategorization(engagement.getCategorization())) {
-                // If supported categorization - add to set
-                sourceSystems.add(engagement.getSourceSystem());
+
+        if (!engagements.isEmpty()) {
+            Set<String> sourceSystems = new HashSet<String>(); // set of unique source system hsa ids
+            
+            // remove unsupported categorizations; remove duplicate sourceSystems
+            for (EngagementType engagement : engagements) {
+                if (isCategorization(engagement.getCategorization())) {
+                    // If supported categorization - add to set
+                    sourceSystems.add(engagement.getSourceSystem());
+                }
+            }
+            if (sourceSystems.isEmpty()) {
+                log.debug("No engagements found for functional status categorizations");
+            } else {
+                log.debug("Preparing to call {} different source systems", sourceSystems.size());
+                GetFunctionalStatusType request = (GetFunctionalStatusType) qo.getExtraArg(); // consumer's original request
+                for (String sourceSystem : sourceSystems) {
+                    log.info("Preparing to call source system {} for subject of care id {}", sourceSystem, request.getPatientId() == null ? null : request.getPatientId().getId());
+                    // the original request is sent unchanged to each sourceSystem
+                    Object[] reqArr = new Object[] { sourceSystem, request };
+                    requestsToBeSentToSourceSystems.add(reqArr);
+                }
             }
         }
-
-        log.debug("Preparing to call {} different source systems", sourceSystems.size());
-        List<Object[]> requestsToBeSentToSourceSystems = new ArrayList<Object[]>();
-        GetFunctionalStatusType request = (GetFunctionalStatusType) qo.getExtraArg(); // consumer's original request
-
-        for (String sourceSystem : sourceSystems) {
-            log.info("Preparing to call source system {} for subject of care id {}", sourceSystem, request.getPatientId() == null ? null : request.getPatientId().getId());
-            // the original request is sent unchanged to each sourceSystem
-            Object[] reqArr = new Object[] { sourceSystem, request };
-            requestsToBeSentToSourceSystems.add(reqArr);
-        }
-
-        log.debug("Transformed payload: {}", requestsToBeSentToSourceSystems);
         return requestsToBeSentToSourceSystems;
     }
 

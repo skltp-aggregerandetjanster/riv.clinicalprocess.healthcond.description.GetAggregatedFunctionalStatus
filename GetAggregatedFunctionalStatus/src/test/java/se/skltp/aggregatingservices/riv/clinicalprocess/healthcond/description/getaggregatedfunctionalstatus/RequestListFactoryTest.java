@@ -52,7 +52,6 @@ public class RequestListFactoryTest {
         objectUnderTest.setEiCategorizations("abc");
         QueryObject eiQueryObject = new QueryObject(new FindContentType(), new GetFunctionalStatusType());
         assertTrue(eiQueryObject.getExtraArg().getClass() == GetFunctionalStatusType.class);
-        ((GetFunctionalStatusType)eiQueryObject.getExtraArg()).getCareUnitHSAId().add("testNoEngagements");
         FindContentResponseType findContentResponse = new FindContentResponseType();
         List<?> l = objectUnderTest.createRequestList(eiQueryObject, findContentResponse);
         assertEquals(0,l.size());
@@ -63,7 +62,6 @@ public class RequestListFactoryTest {
         objectUnderTest.setEiCategorizations("abc");
         QueryObject eiQueryObject = new QueryObject(new FindContentType(), new GetFunctionalStatusType());
         assertTrue(eiQueryObject.getExtraArg().getClass() == GetFunctionalStatusType.class);
-        ((GetFunctionalStatusType)eiQueryObject.getExtraArg()).getCareUnitHSAId().add("testNoEngagements");
         FindContentResponseType findContentResponse = new FindContentResponseType();
         
         EngagementType e = new EngagementType();
