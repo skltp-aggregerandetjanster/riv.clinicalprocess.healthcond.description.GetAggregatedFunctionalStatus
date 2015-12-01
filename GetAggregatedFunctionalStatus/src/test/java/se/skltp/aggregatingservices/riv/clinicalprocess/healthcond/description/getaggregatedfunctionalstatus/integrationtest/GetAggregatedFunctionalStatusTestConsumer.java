@@ -25,7 +25,7 @@ public class GetAggregatedFunctionalStatusTestConsumer extends AbstractTestConsu
         String personnummer = TEST_RR_ID_ONE_HIT;
 
         GetAggregatedFunctionalStatusTestConsumer consumer 
-          = new GetAggregatedFunctionalStatusTestConsumer(serviceAddress, SAMPLE_SENDER_ID, SAMPLE_ORIGINAL_CONSUMER_HSAID);
+          = new GetAggregatedFunctionalStatusTestConsumer(serviceAddress, SAMPLE_SENDER_ID, SAMPLE_ORIGINAL_CONSUMER_HSAID, SAMPLE_CORRELATION_ID);
         Holder<GetFunctionalStatusResponseType> responseHolder = new Holder<GetFunctionalStatusResponseType>();
         Holder<ProcessingStatusType> processingStatusHolder = new Holder<ProcessingStatusType>();
 
@@ -34,9 +34,9 @@ public class GetAggregatedFunctionalStatusTestConsumer extends AbstractTestConsu
         log.info("Returned #timeslots = " + responseHolder.value.getFunctionalStatusAssessment().size());
     }
 
-    public GetAggregatedFunctionalStatusTestConsumer(String serviceAddress, String senderId, String originalConsumerHsaId) {
+    public GetAggregatedFunctionalStatusTestConsumer(String serviceAddress, String senderId, String originalConsumerHsaId, String correlationId) {
         // Setup a web service proxy for communication using HTTPS with mutual authentication
-        super(GetFunctionalStatusResponderInterface.class, serviceAddress, senderId, originalConsumerHsaId);
+        super(GetFunctionalStatusResponderInterface.class, serviceAddress, senderId, originalConsumerHsaId, correlationId);
     }
 
     public void callService(String logicalAddress, String registeredResidentId, Holder<ProcessingStatusType> processingStatusHolder,

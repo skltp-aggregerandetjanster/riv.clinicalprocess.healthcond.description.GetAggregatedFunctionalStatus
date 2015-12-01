@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
+<!--
 DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOING!
 [soi-toolkit.gen.version=2.0.0-M4]
 [soi-toolkit.gen.type=services]
@@ -19,9 +19,6 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
   <artifactId>GetAggregatedFunctionalStatus-teststub</artifactId>
   <packaging>mule</packaging>
   <name>GetAggregatedFunctionalStatus-teststub</name>
-  <properties>
-    <skltp.agp.version>1.3.1</skltp.agp.version>
-  </properties>
 
   <dependencies>
     <!-- dependencies to the integration component that contains the services to stub -->
@@ -118,7 +115,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
               <groupId>org.safehaus.jug</groupId>
               <artifactId>jug.osgi</artifactId>
             </exclusion>
-            
+
             <!-- activemq needs to be added manually to MULE_HOME/lib/user if required, see issue 283 -->
             <exclusion>
               <groupId>org.apache.activemq</groupId>
@@ -159,11 +156,11 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
   <profiles>
     <profile>
       <id>muleServer</id>
-      <!-- Start mule server with the command 
-           mvn -PmuleServer 
-           or 
-           mvn -PmuleServer -Dexec.args="${artifaceId}-config.xml" 
-           if you want to override the default config-file 
+      <!-- Start mule server with the command
+           mvn -PmuleServer
+           or
+           mvn -PmuleServer -Dexec.args="${artifaceId}-config.xml"
+           if you want to override the default config-file
         -->
       <build>
         <defaultGoal>test</defaultGoal>
