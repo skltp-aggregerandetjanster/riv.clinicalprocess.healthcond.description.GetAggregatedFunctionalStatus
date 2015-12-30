@@ -16,7 +16,7 @@ public class GetAggregatedFunctionalStatusTestProducerDb extends TestProducerDb 
 
     @Override
     public Object createResponse(Object... responseItems) {
-        log.debug("Creates a response with {} items", responseItems);
+        log.info("Creates a response with {} items", responseItems.length);
         GetFunctionalStatusResponseType response = new GetFunctionalStatusResponseType();
         for (int i = 0; i < responseItems.length; i++) {
             response.getFunctionalStatusAssessment().add((FunctionalStatusAssessmentType) responseItems[i]);

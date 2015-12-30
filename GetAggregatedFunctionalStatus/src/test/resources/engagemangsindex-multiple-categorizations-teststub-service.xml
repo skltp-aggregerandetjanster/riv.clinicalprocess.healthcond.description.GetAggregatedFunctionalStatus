@@ -13,22 +13,39 @@
 		http://www.mulesoft.org/schema/mule/jms     http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd
 	">
 
-    <spring:bean name="engagemangsindex-teststub-bean" class="${ENGAGEMANGSINDEX_PRODUCER_TESTSTUB_IMPL}" >
+    <custom-transformer name="engagemangsindexTestProducerLogger" class="se.skltp.agp.test.producer.EngagemangsindexTestProducerLogger"/>
+
+    <!-- external properties have now been moved into the component class, which is now called with the default constructor -->
+	<simple-service 
+		name="engagemangsindex-teststub-service"
+        address="${ENGAGEMANGSINDEX_TESTSTUB_INBOUND_URL}?connector=soitoolkit-http-connector" 
+        transformer-refs="engagemangsindexTestProducerLogger"
+        type="jax-ws"
+        component-class="${ENGAGEMANGSINDEX_PRODUCER_TESTSTUB_IMPL}"/>
+
+
+     <!-- 
+     
+     The following used to work, but no longer works in mule 3.7 - @see https://www.mulesoft.org/jira/browse/MULE-9015
+     
+     <spring:bean name="engagemangsindex-teststub-bean" class="${ENGAGEMANGSINDEX_PRODUCER_TESTSTUB_IMPL}" >
         <spring:constructor-arg index="0" value="${EI_SERVICE_DOMAIN}"/>
         <spring:constructor-arg index="1" value="${EI_CATEGORIZATIONS}"/>
         <spring:constructor-arg index="2" value="${SERVICE_TIMEOUT_MS}"/>
-    </spring:bean>
-
-    <custom-transformer name="engagemangsindexTestProducerLogger" class="se.skltp.agp.test.producer.EngagemangsindexTestProducerLogger"/>
-
-	<simple-service 
-		name="engagemangsindex-teststub-service"
+     </spring:bean>
+     
+     <custom-transformer name="engagemangsindexTestProducerLogger" class="se.skltp.agp.test.producer.EngagemangsindexTestProducerLogger"/>
+     
+     <simple-service 
+        name="engagemangsindex-teststub-service"
         address="${ENGAGEMANGSINDEX_TESTSTUB_INBOUND_URL}?connector=soitoolkit-http-connector" 
         transformer-refs="engagemangsindexTestProducerLogger"
         type="jax-ws">
         <component>
             <spring-object bean="engagemangsindex-teststub-bean"/>
         </component>
-    </simple-service>
- 
+     </simple-service>
+     
+     -->
+
 </mule>
