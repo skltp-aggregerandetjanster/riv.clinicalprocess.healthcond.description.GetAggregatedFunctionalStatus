@@ -43,13 +43,21 @@ public class EngagemangsindexTestProducer implements FindContentResponderInterfa
     // never null - but can be empty
     private List<String> eiCategorizations = new ArrayList<String>();
 
+    // workaround for known mule 3.7 limitation https://www.mulesoft.org/jira/browse/MULE-9015.
+    public EngagemangsindexTestProducer() {
+        this("riv:clinicalprocess:healthcond:description", "fun-fun,pad-pad", 4000L);
+    }
+    
     /**
      * Constructor. Object needs to be fully instantiated before initialising the index.
+     * 
+     * This constructor is no longer accessible from mule 3.7 configuration - @see https://www.mulesoft.org/jira/browse/MULE-9015.
      * @param eiServiceDomain
      * @param eiCategorizations
      * @param timeout
      */
     public EngagemangsindexTestProducer(String eiServiceDomain, String eiCategorizations, long timeout) {
+        log.info("Constructing EngagemangsindexTestProducer");
         this.eiServiceDomain = eiServiceDomain;
         setEiCategorizations(eiCategorizations);
         serviceTimeoutMs = timeout;
