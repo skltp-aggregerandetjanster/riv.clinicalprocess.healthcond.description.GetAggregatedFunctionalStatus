@@ -47,7 +47,7 @@ public class EngagemangsindexTestProducer implements FindContentResponderInterfa
      * Constructor. Object needs to be fully instantiated before initialising the index.
      * 
      * @param eiServiceDomain - riv:clinicalprocess:healthcond:description
-     * @param eiCategorizations comma separated list of categorization Strings
+     * @param eiCategorizations comma-separated list of categorization Strings
      * @param timeout in milliseconds
      */
     public EngagemangsindexTestProducer(String eiServiceDomain, String eiCategorizations, long timeout) {
