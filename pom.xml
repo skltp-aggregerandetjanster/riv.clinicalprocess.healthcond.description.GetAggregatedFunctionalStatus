@@ -39,4 +39,23 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
     <module>GetAggregatedFunctionalStatus-teststub</module>
     <module>GetAggregatedFunctionalStatus-schemas</module>
   </modules>
+  
+		<build>
+			<pluginManagement>
+				<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+										<autoVersionSubmodules>true</autoVersionSubmodules>
+										<tagNameFormat>v@{project.version}</tagNameFormat>
+                    <pushChanges>false</pushChanges>
+										<localCheckout>true</localCheckout>
+                </configuration>
+            </plugin>
+					</plugins>
+			</pluginManagement>
+		</build>  
+  
 </project>
