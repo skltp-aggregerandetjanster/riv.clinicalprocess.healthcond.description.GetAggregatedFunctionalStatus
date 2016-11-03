@@ -20,6 +20,7 @@
         <spring:property name="locations">
           <spring:list>
             <spring:value>classpath:GetAggregatedFunctionalStatus-config.properties</spring:value>
+	        <spring:value>classpath:agp-config-override.properties</spring:value>
             <spring:value>classpath:GetAggregatedFunctionalStatus-config-override.properties</spring:value>
           </spring:list>
         </spring:property>
@@ -28,6 +29,7 @@
       <!-- Load teststub services -->
       <spring:import resource="classpath:teststub-services/service-producer-teststub-service.xml"/>
       <spring:import resource="classpath:teststub-services/PingForConfiguration-teststub-service.xml"/>
+      <spring:import resource="classpath:teststub-non-default-services/tak-teststub-service.xml" />
 
       <!-- handles multiple categorizations -->
       <spring:import resource="classpath:engagemangsindex-multiple-categorizations-teststub-service.xml"/>
