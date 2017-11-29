@@ -18,7 +18,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 
   <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description</groupId>
   <artifactId>GetAggregatedFunctionalStatus-parent</artifactId>
-  <version>1.2.1-RC1</version>
+  <version>1.2.1-RC2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>GetAggregatedFunctionalStatus-parent</name>
 
@@ -31,7 +31,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
     <connection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.description.GetAggregatedFunctionalStatus.git</connection>
     <developerConnection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.description.GetAggregatedFunctionalStatus.git</developerConnection>
     <url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.description.GetAggregatedFunctionalStatus.git</url>
-    <tag>v1.2.1-RC1</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <modules>
