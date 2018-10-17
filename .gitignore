@@ -7,3 +7,7 @@ GetAggregatedFunctionalStatus-teststub/target
 GetAggregatedFunctionalStatus/target
 target
 GetAggregatedFunctionalStatus/.settings
+
+# intellij
+.idea
+*.iml
