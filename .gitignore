@@ -11,3 +11,4 @@ GetAggregatedFunctionalStatus/.settings
 # intellij
 .idea
 *.iml
+/GetAggregatedFunctionalStatus-v2-teststub/.settings/*.prefs
