@@ -11,7 +11,7 @@
 
   <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description</groupId>
 	<artifactId>GetAggregatedFunctionalStatus-v2</artifactId>
-	<version>2.0.0-RC1</version>
+	<version>2.0.0-RC2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>GetAggregatedFunctionalStatus-v2</name>
 
@@ -24,7 +24,7 @@
     <connection>scm:git:https://github.com:443/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.description.GetAggregatedFunctionalStatus.git</connection>
     <developerConnection>scm:git:https://github.com:443/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.description.GetAggregatedFunctionalStatus.git</developerConnection>
     <url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.description.GetAggregatedFunctionalStatus.git</url>
-    <tag>GetAggregatedFunctionalStatus-v2-2.0.0-RC1</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <modules>
