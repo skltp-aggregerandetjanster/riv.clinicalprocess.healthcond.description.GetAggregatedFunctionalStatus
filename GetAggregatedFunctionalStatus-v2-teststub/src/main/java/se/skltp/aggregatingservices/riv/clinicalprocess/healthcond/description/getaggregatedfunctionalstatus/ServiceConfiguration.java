@@ -13,7 +13,7 @@ import se.skltp.aggregatingservices.config.TestProducerConfiguration;
 @ConfigurationProperties(prefix="getaggregatedfunctionalstatus.v2.teststub")
 public class ServiceConfiguration extends TestProducerConfiguration {
 
-  public static final String SCHEMA_PATH = "classpath:/schemas/clinicalprocess_healthcond_description_2.1.3/interactions/GetFunctionalStatusInteraction/GetFunctionalStatusInteraction_2.0_RIVTABP21.wsdl";
+  public static final String SCHEMA_PATH = "/schemas/clinicalprocess_healthcond_description_2.1.3/interactions/GetFunctionalStatusInteraction/GetFunctionalStatusInteraction_2.0_RIVTABP21.wsdl";
 
   public ServiceConfiguration() {
     setProducerAddress("http://localhost:8083/vp");

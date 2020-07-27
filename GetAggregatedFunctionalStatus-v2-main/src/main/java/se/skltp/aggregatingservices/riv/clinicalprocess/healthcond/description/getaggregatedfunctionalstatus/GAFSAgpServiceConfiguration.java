@@ -12,7 +12,7 @@ import riv.clinicalprocess.healthcond.description.getfunctionalstatus.v2.rivtabp
 @ConfigurationProperties(prefix = "getaggregatedfunctionalstatus.v2")
 public class GAFSAgpServiceConfiguration extends se.skltp.aggregatingservices.configuration.AgpServiceConfiguration {
 
-  public static final String SCHEMA_PATH = "classpath:/schemas/clinicalprocess_healthcond_description_2.1.3/interactions/GetFunctionalStatusInteraction/GetFunctionalStatusInteraction_2.0_RIVTABP21.wsdl";
+public static final String SCHEMA_PATH = "/schemas/clinicalprocess_healthcond_description_2.1.3/interactions/GetFunctionalStatusInteraction/GetFunctionalStatusInteraction_2.0_RIVTABP21.wsdl";
 
   public GAFSAgpServiceConfiguration() {
 
@@ -20,7 +20,7 @@ public class GAFSAgpServiceConfiguration extends se.skltp.aggregatingservices.co
     setTargetNamespace("urn:riv:clinicalprocess:healthcond:description:GetFunctionalStatus:2:rivtabp21");
 
     // Set inbound defaults
-    setInboundServiceURL("http://localhost:9018/GetAggregatedFunctionalStatus/service/v2");
+    setInboundServiceURL("http://0.0.0.0:9018/GetAggregatedFunctionalStatus/service/v2");
     setInboundServiceWsdl(SCHEMA_PATH);
     setInboundServiceClass(GetFunctionalStatusResponderInterface.class.getName());
     setInboundPortName(GetFunctionalStatusResponderService.GetFunctionalStatusResponderPort.toString());
@@ -32,7 +32,7 @@ public class GAFSAgpServiceConfiguration extends se.skltp.aggregatingservices.co
 
     // FindContent
     setEiServiceDomain("riv:clinicalprocess:healthcond:description");
-    setEiCategorization(null);
+    setEiCategorization("fun-fun,pad-pad");
 
     // TAK
     setTakContract("urn:riv:clinicalprocess:healthcond:description:GetFunctionalStatusResponder:2");
