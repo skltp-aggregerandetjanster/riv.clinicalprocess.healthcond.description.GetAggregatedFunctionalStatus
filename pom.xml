@@ -6,25 +6,55 @@
   <parent>
     <artifactId>agp-parent</artifactId>
     <groupId>se.skltp.agp</groupId>
-    <version>3.0.0-RC4</version>
+    <version>3.0.0</version>
   </parent>
 
   <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description</groupId>
 	<artifactId>GetAggregatedFunctionalStatus-v2</artifactId>
-	<version>2.0.0</version>
+	<version>2.1.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>GetAggregatedFunctionalStatus-v2</name>
 
   <properties>
-    <agp-parent.version>3.0.0-RC4</agp-parent.version>
+    <agp-parent.version>3.0.0</agp-parent.version>
     <apache-cfx.version>3.2.7</apache-cfx.version>
   </properties>
+
+  <distributionManagement>
+    <repository>
+      <id>release-nexus</id>
+      <name>Release Nexus</name>
+      <url>${releases-nexus-url}</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshot-nexus</id>
+      <name>Snapshot Nexus</name>
+      <url>${snapshot-nexus-url}</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.5.1</version>
+          <configuration>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+            <tagNameFormat>v@{project.version}</tagNameFormat>
+            <localCheckout>true</localCheckout>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
   <scm>
     <connection>scm:git:https://github.com:443/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.description.GetAggregatedFunctionalStatus.git</connection>
     <developerConnection>scm:git:https://github.com:443/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.description.GetAggregatedFunctionalStatus.git</developerConnection>
     <url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.description.GetAggregatedFunctionalStatus.git</url>
-    <tag>GetAggregatedFunctionalStatus-v2-2.0.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <modules>
