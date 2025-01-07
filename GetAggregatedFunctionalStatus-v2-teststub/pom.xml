@@ -5,7 +5,7 @@
   <parent>
     <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.description</groupId>
     <artifactId>GetAggregatedFunctionalStatus-v2</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
   </parent>
   <artifactId>GetAggregatedFunctionalStatus-v2-teststub</artifactId>
   <dependencies>
